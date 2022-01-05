@@ -1,0 +1,2 @@
+click<8.1
+openrobot-api-wrapper @ git+https://github.com/OpenRobot-Packages/Python-API-Wrapper
