@@ -43,6 +43,15 @@ def main(ctx: click.Context):
         
         ctx.exit()
 
+@main.command("help")
+@click.pass_context
+def help_command(ctx: click.Context):
+    """
+    Show this message and exit.
+    """
+
+    ctx.invoke(main)
+
 # Setup OpenRobot CLI with all the subcommands
 
 # Imports:
