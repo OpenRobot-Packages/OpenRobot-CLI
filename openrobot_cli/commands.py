@@ -13,7 +13,22 @@ def print_version(ctx, param, value):
     click.echo(f'OpenRobot-CLI Version {openrobot_cli_version}')
     ctx.exit()
 
-@click.group("openrobot", invoke_without_command=True)
+openrobot_cli_ascii = """
+ █████╗ ██████╗ ███████╗███╗  ██╗██████╗  █████╗ ██████╗  █████╗ ████████╗        █████╗ ██╗     ██╗
+██╔══██╗██╔══██╗██╔════╝████╗ ██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝       ██╔══██╗██║     ██║
+██║  ██║██████╔╝█████╗  ██╔██╗██║██████╔╝██║  ██║██████╦╝██║  ██║   ██║   █████╗ ██║  ╚═╝██║     ██║
+██║  ██║██╔═══╝ ██╔══╝  ██║╚████║██╔══██╗██║  ██║██╔══██╗██║  ██║   ██║   ╚════╝ ██║  ██╗██║     ██║
+╚█████╔╝██║     ███████╗██║ ╚███║██║  ██║╚█████╔╝██████╦╝╚█████╔╝   ██║          ╚█████╔╝███████╗██║
+ ╚════╝ ╚═╝     ╚══════╝╚═╝  ╚══╝╚═╝  ╚═╝ ╚════╝ ╚═════╝  ╚════╝    ╚═╝           ╚════╝ ╚══════╝╚═╝
+"""
+
+class OpenRobotCLI(click.Group):
+    def format_help(self, ctx: click.Context, formatter):
+        click.echo(openrobot_cli_ascii)
+        return super().format_help(ctx, formatter)
+
+@click.group("openrobot", invoke_without_command=True, cls=OpenRobotCLI,
+             context_settings=dict(help_option_names=["--help", "-h"]))
 @click.option('--version', '-V', is_flag=True, callback=print_version,
               expose_value=False, is_eager=True)
 @click.pass_context
@@ -27,7 +42,6 @@ def main(ctx: click.Context):
         click.echo(help_str)
         
         ctx.exit()
-
 
 # Setup OpenRobot CLI with all the subcommands
 
