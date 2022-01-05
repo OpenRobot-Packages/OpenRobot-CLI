@@ -1,8 +1,9 @@
 import re
+import os
 import click
 
 version = ''
-with open('openrobot_cli/__init__.py') as f:
+with open(f'{os.path.dirname(os.path.realpath(__file__))}/__init__.py') as f:
     openrobot_cli_version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1) or '0.0.0'
 
 def print_version(ctx, param, value):
