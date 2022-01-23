@@ -1,6 +1,9 @@
 # OpenRobot-CLI
 A CLI/Shell supporting [JeyyAPI](https://api.jeyy.xyz), [OpenRobot API](https://api.openrobot.xyz) and [RePI API](https://repi.openrobot.xyz).
 
+# ⚠️ WARNING ⚠️:
+This is a click archive. This branch no longer works and is un-maintained. Unless you know what you are doing here, please view the [Current Production of OpenRobot-CLI Instead](https://github.com/OpenRobot-Packages/OpenRobot-CLI).
+
 # Installation:
 ```sh
 pip install -U git+https://github.com/OpenRobot-Packages/OpenRobot-CLI
