@@ -1,5 +1,5 @@
 # OpenRobot-CLI
-A CLI/Shell supporting [JeyyAPI](https://api.jeyy,xyz), [OpenRobot API](https://api.openrobot.xyz) and [RePI API](https://repi.openrobot.xyz).
+A CLI/Shell supporting [JeyyAPI](https://api.jeyy.xyz), [OpenRobot API](https://api.openrobot.xyz) and [RePI API](https://repi.openrobot.xyz).
 
 # Installation:
 ```sh
