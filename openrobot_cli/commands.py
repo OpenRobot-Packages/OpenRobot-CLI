@@ -44,11 +44,22 @@ def main(ctx: click.Context):
         ctx.exit()
 
 @main.command("help")
+@click.argument('command', default=None, nargs=-1, type=str)
 @click.pass_context
-def help_command(ctx: click.Context):
+def help_command(ctx: click.Context, command: str):
     """
     Show this message and exit.
     """
+
+    command = ' '.join(command)
+
+    if command:
+        cmd = main.get_command(ctx, command)
+        help_str = cmd.get_help(ctx)
+
+        click.echo(help_str)
+
+        ctx.exit()
 
     ctx.invoke(main)
 
@@ -74,10 +85,19 @@ except:
 # Setup:
 
 if api_cli_setup:
-    api_cli_setup(main)
+    try:
+        api_cli_setup(main)
+    except:
+        pass
 
 if jeyyapi_cli_setup:
-    jeyyapi_cli_setup(main)
+    try:
+        jeyyapi_cli_setup(main)
+    except:
+        pass
 
 if repi_cli_setup:
-    repi_cli_setup(main)
+    try:
+        repi_cli_setup(main)
+    except:
+        pass
